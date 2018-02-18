@@ -40,7 +40,31 @@ namespace foreach_in_interface
             return new GAEnumerator(a);
         }
 
-
+        class GAEnumerator : IEnumerator
+        {
+            object[] a;
+            int i = -1;
+            public GAEnumerator(object[] a) { this.a = a; }
+            public object Current
+            {
+                get
+                {
+                    return a[i];
+                }
+            }
+            public void Reset()
+            {
+                i = -1;
+            }
+            public bool MoveNext()
+            {
+                do i++;
+                while (i < a.Length && a[i] == null);
+                if (i == a.Length)
+                    return false;
+                else return true;
+            }
+        }
     }
 }
 
