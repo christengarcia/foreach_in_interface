@@ -34,5 +34,13 @@ namespace foreach_in_interface
                 return a[i];
             }
         }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new GAEnumerator(a);
+        }
+
+
     }
 }
+
